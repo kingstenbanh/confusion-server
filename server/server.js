@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var dir = path.resolve(__dirname + '/../client');
 var controller = require('./controller');
 var helpers = require('./helpers');
 var port = process.env.PORT || 4000;
@@ -51,7 +50,7 @@ io.on('connection', function(socket){
 
 ///////////////////////////    STARTING SERVER    ///////////////////////////
 
-// app.use(express.static(dir));
+app.use(express.static(__dirname, 'index.html'));
 
 http.listen(port, function(){
   console.log('listening on *:4000');
